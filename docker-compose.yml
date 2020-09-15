@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    mysql:
+        image: mysql:5.5
+        container_name: mysql
+        restart: always
+        volumes:
+            - /opt/chart_backend_mysql/mysql5:/var/lib/mysql
+            # - /opt/chart_backend_mysql/my.cnf:/etc/mysql/my.cnf:ro
+        ports:
+            - 3306:3306/tcp
+
+        environment:
+            - MYSQL_DATABASE=chart_data
+            - MYSQL_ROOT_PASSWORD=root123
+            - PGID=100
+            - PUID=1000
+        #command:
+        #    - /sbin/init
